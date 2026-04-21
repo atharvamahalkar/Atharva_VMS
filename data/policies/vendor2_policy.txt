@@ -1,0 +1,14 @@
+DOCUMENT_TYPE: policy
+VENDOR_NAME: Internal Procurement Policy
+
+SECTION: Vendor Selection
+Vendors must be evaluated based on quality, cost, and reliability.
+A minimum score of 75 percent is required.
+
+SECTION: Payment Policy
+Payments should follow agreed contract terms.
+Advance payment should not exceed 20 percent.
+
+SECTION: Compliance Rules
+All vendors must comply with ISO standards.
+Non-compliance may result in disqualification.

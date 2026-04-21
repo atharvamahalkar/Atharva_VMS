@@ -1,0 +1,21 @@
+DOCUMENT_TYPE: contract
+VENDOR_NAME: Global Tech Solutions Ltd
+CONTRACT_ID: C-2001
+START_DATE: 2026-02-01
+END_DATE: 2027-01-31
+
+SECTION: Payment Terms
+Payment shall be made within 45 days from invoice submission.
+A late payment interest of 1.5 percent per month will be applied.
+
+SECTION: Delivery Terms
+All hardware deliveries must be completed within 10 working days.
+Any delay beyond 15 days will be considered a breach.
+
+SECTION: Service Level Agreement
+System uptime must be maintained at 99.5 percent.
+Failure to meet SLA will result in penalty.
+
+SECTION: Termination Clause
+Either party may terminate the contract with 30 days written notice.
+Immediate termination may occur in case of serious breach.

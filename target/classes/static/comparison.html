@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architectural Ledger - Document Comparison</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#9f403d",
+                        "secondary-fixed-dim": "#c5d6f0",
+                        "inverse-on-surface": "#9a9d9f",
+                        "on-error-container": "#752121",
+                        "surface-tint": "#4f6073",
+                        "on-tertiary-fixed-variant": "#515771",
+                        "on-surface-variant": "#566166",
+                        "on-secondary-fixed": "#314055",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#506076",
+                        "primary-fixed-dim": "#c4d6ed",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed-dim": "#c8cdec",
+                        "inverse-primary": "#d5e7fe",
+                        "tertiary": "#585e78",
+                        "on-background": "#2a3439",
+                        "surface-container": "#e8eff3",
+                        "on-tertiary-fixed": "#353b53",
+                        "on-secondary-fixed-variant": "#4d5d73",
+                        "on-secondary": "#f7f9ff",
+                        "secondary-container": "#d3e4fe",
+                        "primary-container": "#d2e4fb",
+                        "secondary-dim": "#44546a",
+                        "outline": "#717c82",
+                        "surface-container-high": "#e1e9ee",
+                        "on-tertiary-container": "#474d67",
+                        "on-primary": "#f5f8ff",
+                        "tertiary-dim": "#4c526c",
+                        "surface-dim": "#cfdce3",
+                        "on-primary-fixed-variant": "#4c5d70",
+                        "surface-bright": "#f7f9fb",
+                        "error-container": "#fe8983",
+                        "error-dim": "#4e0309",
+                        "primary-dim": "#435467",
+                        "surface": "#f7f9fb",
+                        "outline-variant": "#a9b4b9",
+                        "primary-fixed": "#d2e4fb",
+                        "inverse-surface": "#0b0f10",
+                        "on-secondary-container": "#435368",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-variant": "#d9e4ea",
+                        "surface-container-low": "#f0f4f7",
+                        "primary": "#4f6073",
+                        "tertiary-fixed": "#d6dbfb",
+                        "on-error": "#fff7f6",
+                        "surface-container-highest": "#d9e4ea",
+                        "on-tertiary": "#faf8ff",
+                        "tertiary-container": "#d6dbfb",
+                        "on-primary-container": "#425366",
+                        "on-surface": "#2a3439",
+                        "on-primary-fixed": "#304153"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-background bg-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-50 w-full bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-xl flex items-center justify-between px-8 py-3 shadow-sm">
+<div class="flex items-center gap-8">
+<span class="font-['Manrope'] font-bold text-xl tracking-tighter text-slate-900 dark:text-slate-50">Architectural Ledger</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-sm tracking-tight hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-2 py-1 rounded" href="index.html">Search</a>
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-sm tracking-tight hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-2 py-1 rounded" href="repository.html">Repository</a>
+<a class="text-slate-900 dark:text-white font-semibold font-['Inter'] text-sm tracking-tight" href="comparison.html">Compare</a>
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-sm tracking-tight hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-2 py-1 rounded" href="#">Vendors</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-500 p-2 cursor-pointer hover:bg-slate-200/50 rounded-full transition-all">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<button class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2 rounded-lg font-medium text-sm flex items-center gap-2 scale-95 active:opacity-80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                Upload
+            </button>
+</div>
+</nav>
+
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 px-8 max-w-[1600px] mx-auto md:ml-64">
+<!-- Header Section -->
+<header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-3 text-on-surface-variant text-sm font-medium mb-1">
+<span>Repository</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span>Document Analysis</span>
+</div>
+<h1 class="text-3xl font-extrabold tracking-tight text-on-surface">Document Comparison</h1>
+<p class="text-on-surface-variant max-w-2xl">Compare your uploaded contracts with our sample contracts to identify differences and assess risks.</p>
+</div>
+<div class="flex items-center gap-3 bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-xl border border-tertiary-fixed-dim/20 shadow-sm">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-bold text-lg" id="comparisonStatus">Ready to Compare</span>
+</div>
+</header>
+
+<!-- Document Selection Section -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm mb-8">
+<h3 class="text-xl font-bold text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">compare</span>
+Select Documents to Compare
+</h3>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Document 1: Sample Contract -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<h4 class="font-semibold text-on-surface">Sample Contract</h4>
+<span class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant opacity-60">Reference Document</span>
+</div>
+<select id="doc1Select" class="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-surface">
+<option value="">Select a sample contract...</option>
+</select>
+</div>
+
+<!-- Document 2: User Document -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+<h4 class="font-semibold text-on-surface">Your Contract</h4>
+<span class="text-xs font-semibold uppercase tracking-widest text-primary font-bold">Upload or Select</span>
+</div>
+
+<!-- Repository Selection -->
+<div class="space-y-3">
+<label class="block text-sm font-medium text-on-surface">From Repository:</label>
+<select id="doc2Select" class="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-surface">
+<option value="">Select from repository...</option>
+</select>
+</div>
+
+<!-- Upload Section -->
+<div class="relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="bg-surface text-on-surface-variant px-3 py-1 rounded-full text-xs font-medium">OR</span>
+</div>
+<hr class="border-outline-variant">
+</div>
+
+<div class="space-y-3">
+<label class="block text-sm font-medium text-on-surface">Upload File:</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-6 hover:border-primary transition-colors cursor-pointer" onclick="document.getElementById('fileUpload').click()">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl text-outline-variant mb-2">upload_file</span>
+<p class="text-on-surface font-medium mb-1">Click to upload your contract</p>
+<p class="text-on-surface-variant text-sm">TXT files up to 10MB</p>
+</div>
+<input type="file" id="fileUpload" accept=".txt" class="hidden">
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-8 flex justify-center">
+<button id="compareBtn" onclick="compareDocuments()" class="bg-primary text-on-primary px-8 py-3 rounded-lg hover:bg-primary-dim disabled:opacity-50 disabled:cursor-not-allowed font-semibold text-lg flex items-center gap-3 shadow-lg transition-all">
+<span class="material-symbols-outlined">compare</span>
+Compare Documents
+</button>
+</div>
+</section>
+
+<!-- Comparison Results Section -->
+<section id="resultsSection" class="hidden">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<h3 class="text-xl font-bold text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+Comparison Results
+</h3>
+
+<!-- Loading Spinner -->
+<div id="loadingSpinner" class="hidden flex flex-col items-center justify-center py-12">
+<div class="animate-spin rounded-full h-12 w-12 border-b-4 border-primary mb-4"></div>
+<p class="text-on-surface-variant text-lg">Analyzing documents...</p>
+<p class="text-on-surface-variant text-sm mt-2">This may take a few moments</p>
+</div>
+
+<!-- Results Content -->
+<div id="resultsContent" class="prose prose-lg max-w-none text-on-surface">
+<!-- Results will be inserted here -->
+</div>
+</div>
+</section>
+</main>
+
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-slate-100 dark:bg-slate-950 flex flex-col py-8 px-6 hidden md:flex z-50">
+<div class="mb-12">
+<h1 class="font-['Manrope'] font-extrabold text-xl text-slate-900 dark:text-white tracking-tight">Architectural Ledger</h1>
+<p class="text-xs font-medium text-slate-500 tracking-wider uppercase mt-1">VMS Portal</p>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all duration-200 ease-in-out" href="index.html">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Search</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all duration-200 ease-in-out" href="repository.html">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Repository</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-900 dark:text-white font-bold border-r-2 border-slate-900 dark:border-white transition-all duration-200 ease-in-out bg-slate-200/50 dark:bg-slate-800/50" href="comparison.html">
+<span class="material-symbols-outlined" data-icon="compare">compare</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Compare</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Sample Contracts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="corporate_fare">corporate_fare</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Vendors</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 px-2">
+<div class="h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional male project manager with neutral expression in a bright modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJVMCggbwfTSSNcykAxRzwRyPWo8TFSD4SB8HkKKKZDq55LN9WCUoagNYrPcvxTFhXSHyfcm7_bGw5VJoiiJ2DX3ckSsf2oq6N-A6nYldh_XoP-l5_hXu7xg2C5HHgvNm2JwCDZDHZGJmkj3RQyLZbUq1tURwakfk03jRaDdN0hd8On3YiJKFU2bw7zgS-byg9FJEAgvVSxwi8jJ8fGOat9-5MBPgzDUvZp_jUqo8SvCDkvGLdAW9xA03tgomN9qQg--q9nVs5s_mt"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Julian Pierce</p>
+<p class="text-xs text-slate-500 font-medium">Senior Associate</p>
+</div>
+</div>
+</div>
+</aside>
+
+<script>
+        let uploadedDocumentId = null;
+
+        // Load repository documents on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRepositoryDocuments();
+        });
+
+        // Handle file upload
+        document.getElementById('fileUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                uploadFile(file);
+            }
+        });
+
+        function loadRepositoryDocuments() {
+            fetch('/api/documents')
+                .then(response => response.json())
+                .then(data => {
+                    const sampleSelect = document.getElementById('doc1Select');
+                    const repositorySelect = document.getElementById('doc2Select');
+                    if (data.documents && data.documents.length > 0) {
+                        data.documents.forEach(doc => {
+                            if (doc.documentType === 'contract') {
+                                const sampleOption = document.createElement('option');
+                                sampleOption.value = doc.documentId;
+                                sampleOption.textContent = `${doc.fileName} (${doc.folder})`;
+                                sampleSelect.appendChild(sampleOption);
+
+                                const repositoryOption = document.createElement('option');
+                                repositoryOption.value = doc.documentId;
+                                repositoryOption.textContent = `${doc.fileName} (${doc.folder})`;
+                                repositorySelect.appendChild(repositoryOption);
+                            }
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading documents:', error);
+                });
+        }
+
+        function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            document.getElementById('compareBtn').disabled = true;
+            document.getElementById('compareBtn').innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-on-primary inline-block mr-2"></div>Uploading...';
+
+            fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.documentId) {
+                    uploadedDocumentId = data.documentId;
+                    showNotification('File uploaded successfully! You can now compare it with sample contracts.', 'success');
+                    document.getElementById('comparisonStatus').textContent = 'File Uploaded';
+                } else {
+                    showNotification('Upload failed: ' + (data.message || 'Unknown error'), 'error');
+                }
+            })
+            .catch(error => {
+                showNotification('Upload failed: ' + error.message, 'error');
+            })
+            .finally(() => {
+                document.getElementById('compareBtn').disabled = false;
+                document.getElementById('compareBtn').innerHTML = '<span class="material-symbols-outlined mr-2">compare</span>Compare Documents';
+            });
+        }
+
+        function compareDocuments() {
+            const document1Id = document.getElementById('doc1Select').value;
+            let document2Id = document.getElementById('doc2Select').value;
+
+            // If no repository document selected, use uploaded file
+            if (!document2Id && uploadedDocumentId) {
+                document2Id = uploadedDocumentId;
+            }
+
+            if (!document1Id || !document2Id) {
+                showNotification('Please select both documents to compare.', 'error');
+                return;
+            }
+
+            // Show results section and loading spinner
+            document.getElementById('resultsSection').classList.remove('hidden');
+            document.getElementById('loadingSpinner').classList.remove('hidden');
+            document.getElementById('resultsContent').innerHTML = '';
+            document.getElementById('comparisonStatus').textContent = 'Analyzing...';
+
+            // Disable compare button
+            document.getElementById('compareBtn').disabled = true;
+
+            fetch('/api/compare', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    document1Id,
+                    document2Id
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loadingSpinner').classList.add('hidden');
+
+                if (data.comparison) {
+                    // Format the comparison results
+                    const formattedResult = formatComparisonResults(data.comparison);
+                    document.getElementById('resultsContent').innerHTML = formattedResult;
+                    document.getElementById('comparisonStatus').textContent = 'Analysis Complete';
+                } else {
+                    document.getElementById('resultsContent').innerHTML =
+                        '<div class="bg-error-container text-on-error p-4 rounded-lg"><span class="material-symbols-outlined mr-2">error</span>Error: ' + (data.comparison || 'Unknown error occurred') + '</div>';
+                    document.getElementById('comparisonStatus').textContent = 'Analysis Failed';
+                }
+            })
+            .catch(error => {
+                document.getElementById('loadingSpinner').classList.add('hidden');
+                document.getElementById('resultsContent').innerHTML =
+                    '<div class="bg-error-container text-on-error p-4 rounded-lg"><span class="material-symbols-outlined mr-2">error</span>Error: ' + error.message + '</div>';
+                document.getElementById('comparisonStatus').textContent = 'Analysis Failed';
+            })
+            .finally(() => {
+                document.getElementById('compareBtn').disabled = false;
+            });
+        }
+
+        function formatComparisonResults(comparison) {
+            // Convert plain text to HTML with better formatting
+            return comparison
+                .replace(/=== (.+) ===/g, '<h4 class="text-xl font-bold text-on-surface mt-8 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary">article</span>$1</h4>')
+                .replace(/(?:•|-)\s+(.+)/g, '<li class="ml-6 mb-2 flex items-start gap-2"><span class="material-symbols-outlined text-secondary text-sm mt-0.5">check_circle</span>$1</li>')
+                .replace(/\n\n/g, '</p><p class="mb-4 text-on-surface leading-relaxed">')
+                .replace(/\n/g, '<br>')
+                .replace(/(<p class="mb-4 text-on-surface leading-relaxed">)/, '$1')
+                .replace(/(DOCUMENT \d+: .+)/g, '<strong class="text-primary font-semibold">$1</strong>')
+                .replace(/(PAYMENT TERMS:|DELIVERY TERMS:|PENALTY CLAUSES:|Length:|Lines:)/g, '<strong class="text-secondary font-semibold">$1</strong>')
+                .replace(/(\d+) characters/g, '<span class="font-mono bg-surface-container px-2 py-1 rounded text-sm">$1</span> characters')
+                .replace(/(\d+) lines/g, '<span class="font-mono bg-surface-container px-2 py-1 rounded text-sm">$1</span> lines');
+        }
+
+        function showNotification(message, type = 'info') {
+            // Simple notification - you could enhance this with a proper toast system
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
+                type === 'success' ? 'bg-secondary-container text-on-secondary-container' :
+                type === 'error' ? 'bg-error-container text-on-error' :
+                'bg-surface-container text-on-surface'
+            }`;
+            notification.innerHTML = `<span class="material-symbols-outlined mr-2">${
+                type === 'success' ? 'check_circle' :
+                type === 'error' ? 'error' : 'info'
+            }</span>${message}`;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+    </script>
+</body></html>

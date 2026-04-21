@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architectural Ledger | Search Portal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1A2B3C",
+              "background-light": "#f6f7f7",
+              "background-dark": "#15191d",
+              "error": "#9f403d",
+              "secondary-fixed-dim": "#c5d6f0",
+              "inverse-on-surface": "#9a9d9f",
+              "on-error-container": "#752121",
+              "surface-tint": "#4f6073",
+              "on-tertiary-fixed-variant": "#515771",
+              "on-surface-variant": "#566166",
+              "on-secondary-fixed": "#314055",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#506076",
+              "primary-fixed-dim": "#c4d6ed",
+              "background": "#f7f9fb",
+              "tertiary-fixed-dim": "#c8cdec",
+              "inverse-primary": "#d5e7fe",
+              "tertiary": "#585e78",
+              "on-background": "#2a3439",
+              "surface-container": "#e8eff3",
+              "on-tertiary-fixed": "#353b53",
+              "on-secondary-fixed-variant": "#4d5d73",
+              "on-secondary": "#f7f9ff",
+              "secondary-container": "#d3e4fe",
+              "primary-container": "#d2e4fb",
+              "secondary-dim": "#44546a",
+              "outline": "#717c82",
+              "surface-container-high": "#e1e9ee",
+              "on-tertiary-container": "#474d67",
+              "on-primary": "#f5f8ff",
+              "tertiary-dim": "#4c526c",
+              "surface-dim": "#cfdce3",
+              "on-primary-fixed-variant": "#4c5d70",
+              "surface-bright": "#f7f9fb",
+              "error-container": "#fe8983",
+              "error-dim": "#4e0309",
+              "primary-dim": "#435467",
+              "surface": "#f7f9fb",
+              "outline-variant": "#a9b4b9",
+              "primary-fixed": "#d2e4fb",
+              "inverse-surface": "#0b0f10",
+              "on-secondary-container": "#435368",
+              "secondary-fixed": "#d3e4fe",
+              "surface-variant": "#d9e4ea",
+              "surface-container-low": "#f0f4f7",
+              "tertiary-fixed": "#d6dbfb",
+              "on-error": "#fff7f6",
+              "surface-container-highest": "#d9e4ea",
+              "on-tertiary": "#faf8ff",
+              "tertiary-container": "#d6dbfb",
+              "on-primary-container": "#425366",
+              "on-surface": "#2a3439",
+              "on-primary-fixed": "#304153"
+            },
+            fontFamily: {
+              "display": ["Manrope"],
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-header {
+            background: rgba(247, 249, 251, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        .search-gradient {
+            background-color: #1A2B3C;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+    </style>
+</head>
+<body class="text-on-background antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 z-40 glass-header flex items-center justify-between px-8 py-3 w-full">
+<div class="flex items-center gap-6">
+<span class="font-['Manrope'] font-bold text-xl tracking-tighter text-slate-900">Architectural Ledger</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-white font-['Inter'] text-sm font-semibold transition-all hover:opacity-90 active:scale-95 search-gradient shadow-md">
+<span class="material-symbols-outlined text-sm" data-icon="upload">upload</span>
+                Upload
+            </button>
+<div class="w-px h-6 bg-outline-variant/20 mx-2"></div>
+<button class="p-2 rounded-full hover:bg-slate-200/50 transition-colors">
+<span class="material-symbols-outlined text-slate-700" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional headshot of a mature architect in a minimalist studio setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtt3mq6_wYYN4fnaEL-MxnzZlAbnDgBJqQ84JcgFARM8QVeTF97uFJn25dj9K92ON37WFI6qvjR0Rl2mRqQabvTQPbQ38IU0QAFSaIu5r2Ml9vytwH_esWH3GA3owYLGh5GtndTsGwRrjBmYr6n525ZwrzS8c93GnZ5tW5gx7GphIanjOBXqs2FVjItztHamEcVrooAB5fsCB51LoZ36FN2M-iS_9QmtwlttpIzEIWTGUiBAnqjiLRq340lQI0BJllQ6cZiXlyL6RQ"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-slate-100 dark:bg-slate-950 flex flex-col py-8 px-6 hidden md:flex z-50">
+<div class="mb-12">
+<h1 class="font-['Manrope'] font-extrabold text-xl text-slate-900 tracking-tight">Architectural Ledger</h1>
+<p class="text-xs font-medium text-slate-500 tracking-wider uppercase mt-1">VMS Portal</p>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-900 font-bold border-r-2 border-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Search</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Repository</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Sample Contracts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="corporate_fare">corporate_fare</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Vendors</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Manrope'] text-lg tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 px-2">
+<div class="h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" data-alt="close-up portrait of a professional male project manager with neutral expression in a bright modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJVMCggbwfTSSNcykAxRzwRyPWo8TFSD4SB8HkKKKZDq55LN9WCUoagNYrPcvxTFhXSHyfcm7_bGw5VJoiiJ2DX3ckSsf2oq6N-A6nYldh_XoP-l5_hXu7xg2C5HHgvNm2JwCDZDHZGJmkj3RQyLZbUq1tURwakfk03jRaDdN0hd8On3YiJKFU2bw7zgS-byg9FJEAgvVSxwi8jJ8fGOat9-5MBPgzDUvZp_jUqo8SvCDkvGLdAW9xA03tgomN9qQg--q9nVs5s_mt"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Julian Pierce</p>
+<p class="text-xs text-slate-500 font-medium">Senior Associate</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 px-8 pb-12 min-h-screen">
+<div class="max-w-5xl mx-auto mt-12 md:mt-24">
+<!-- Hero Search Section -->
+<div class="text-center mb-16">
+<h2 class="font-headline font-extrabold text-4xl text-on-background mb-4 tracking-tight">Central Ledger Intelligence</h2>
+<p class="font-body text-on-surface-variant text-lg max-w-2xl mx-auto">Access your global vendor network and architectural compliance documents through a single unified interface.</p>
+</div>
+<!-- Large Search Bar Component -->
+<div class="relative group max-w-3xl mx-auto mb-20">
+<div class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-none rounded-2xl py-6 pl-16 pr-6 text-xl font-body text-on-surface shadow-xl shadow-slate-200/50 focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-slate-400" placeholder="Search architectural documents, clauses, or vendors..." type="text"/>
+<div class="absolute inset-y-2 right-2 flex items-center">
+<button class="search-gradient text-white px-8 h-full rounded-xl font-headline font-bold text-sm tracking-wide transition-all active:scale-95 shadow-lg">
+                        Execute
+                    </button>
+</div>
+</div>
+<!-- Dashboard Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Recent Activities Section -->
+<div class="md:col-span-7 bg-surface-container-low rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline font-bold text-xl text-on-background">Recent Activities</h3>
+<button class="text-primary font-label text-xs font-bold uppercase tracking-widest hover:underline">View All</button>
+</div>
+<div class="space-y-1">
+<!-- Activity Item 1 -->
+<div class="flex items-start gap-4 p-4 rounded-lg hover:bg-surface-container transition-colors group">
+<div class="h-10 w-10 rounded bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body text-sm font-semibold text-on-surface">Updated Master Service Agreement</p>
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase">2h ago</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Vendor: <span class="font-medium text-primary">Skyline Structural Group</span> • Version 4.2 uploaded by J. Pierce</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-start gap-4 p-4 rounded-lg hover:bg-surface-container transition-colors group">
+<div class="h-10 w-10 rounded bg-tertiary-container/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="verified_user">verified_user</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body text-sm font-semibold text-on-surface">Vendor Compliance Verified</p>
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase">5h ago</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Certification: ISO 9001 for <span class="font-medium text-primary">NeoMaterials Inc.</span></p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-start gap-4 p-4 rounded-lg hover:bg-surface-container transition-colors group">
+<div class="h-10 w-10 rounded bg-secondary-container/50 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="assignment_late">assignment_late</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body text-sm font-semibold text-on-surface">Clause Conflict Detected</p>
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase">Yesterday</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Conflict found in 'Force Majeure' vs Project A-102 guidelines.</p>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="flex items-start gap-4 p-4 rounded-lg hover:bg-surface-container transition-colors group">
+<div class="h-10 w-10 rounded bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body text-sm font-semibold text-on-surface">New Vendor Onboarded</p>
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase">Oct 12</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1"><span class="font-medium text-primary">Lumina Glass Tech</span> added to the Preferred Vendors repository.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Searches / Quick Links -->
+<div class="md:col-span-5 flex flex-col gap-8">
+<!-- Quick Search History -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 shadow-sm">
+<h3 class="font-headline font-bold text-xl text-on-background mb-6">Recent Searches</h3>
+<div class="flex flex-wrap gap-2">
+<button class="bg-surface-container hover:bg-surface-container-high px-4 py-2 rounded-full text-sm font-body text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                Sustainability Clauses
+                            </button>
+<button class="bg-surface-container hover:bg-surface-container-high px-4 py-2 rounded-full text-sm font-body text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                concrete_suppliers_berlin
+                            </button>
+<button class="bg-surface-container hover:bg-surface-container-high px-4 py-2 rounded-full text-sm font-body text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                liability_limits
+                            </button>
+<button class="bg-surface-container hover:bg-surface-container-high px-4 py-2 rounded-full text-sm font-body text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                HVAC Maintenance
+                            </button>
+</div>
+</div>
+<!-- Repository Quick Stats (Asymmetric Accent) -->
+<div class="bg-primary-dim rounded-xl p-8 text-on-primary shadow-xl">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-[10px] font-bold uppercase tracking-[0.2em] opacity-70">Global Repository</p>
+<h4 class="font-headline font-extrabold text-3xl mt-1">1,248</h4>
+</div>
+<span class="material-symbols-outlined text-3xl opacity-30" data-icon="inventory_2">inventory_2</span>
+</div>
+<p class="font-body text-xs opacity-80 leading-relaxed">Active architectural documents and procurement contracts managed across 12 territories.</p>
+<div class="mt-8 flex gap-4">
+<div class="flex-1 h-1 bg-on-primary/10 rounded-full overflow-hidden">
+<div class="h-full bg-on-primary w-3/4"></div>
+</div>
+<span class="font-label text-[10px] font-bold">75% Audited</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Only on main dashboard) -->
+<button class="fixed bottom-8 right-8 h-14 w-14 rounded-full search-gradient text-white shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-50 group">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+<span class="absolute right-full mr-4 bg-on-background text-white text-xs font-bold py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">New Entry</span>
+</button>
+</body></html>

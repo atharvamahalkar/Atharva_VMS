@@ -1,0 +1,13 @@
+DOCUMENT_TYPE: log
+VENDOR_NAME: Global Tech Solutions Ltd
+LOG_DATE: 2026-03-20
+
+SECTION: Delivery Issue
+Delivery was delayed by 12 days due to supply chain issues.
+
+SECTION: Resolution
+Vendor informed procurement team in advance.
+Penalty clause not applied due to valid reason.
+
+SECTION: Follow Up
+Vendor promised improved logistics for next delivery cycle.

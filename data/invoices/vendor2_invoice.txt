@@ -1,0 +1,17 @@
+DOCUMENT_TYPE: invoice
+VENDOR_NAME: Global Tech Solutions Ltd
+INVOICE_ID: INV-2001
+CONTRACT_ID: C-2001
+INVOICE_DATE: 2026-03-10
+DUE_DATE: 2026-04-25
+
+SECTION: Invoice Summary
+Total amount payable is 2,50,000 INR.
+Payment includes hardware and installation charges.
+
+SECTION: Payment Instructions
+Payment should be made via bank transfer.
+Account details are provided in the official invoice PDF.
+
+SECTION: Late Fee
+A late fee of 2 percent per month will be applied after due date.

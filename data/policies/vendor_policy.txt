@@ -1,0 +1,7 @@
+DOCUMENT_TYPE: policy
+
+SECTION: Payment Rules
+Payments must be completed within 30 days.
+
+SECTION: Risk Management
+Vendors with risk score above 4 must be monitored.

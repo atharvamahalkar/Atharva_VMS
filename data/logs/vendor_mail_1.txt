@@ -1,0 +1,7 @@
+DOCUMENT_TYPE: log
+VENDOR_NAME: ABC Supplies Pvt Ltd
+DATE: 15-Mar-2026
+
+SECTION: Message
+Delivery delayed due to supply chain issues.
+Delay duration: 5 days.

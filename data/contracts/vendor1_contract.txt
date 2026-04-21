@@ -1,0 +1,16 @@
+DOCUMENT_TYPE: contract
+VENDOR_NAME: ABC Supplies Pvt Ltd
+CONTRACT_ID: C-1001
+START_DATE: 01-Jan-2026
+END_DATE: 31-Dec-2026
+
+SECTION: Payment Terms
+Payment will be made within 30 days.
+Late payment penalty is 2 percent per month.
+
+SECTION: Delivery Terms
+Delivery must be completed within 7 days.
+Delay beyond 10 days will incur penalty.
+
+SECTION: Penalty Clause
+Delay beyond 15 days may lead to contract termination.
