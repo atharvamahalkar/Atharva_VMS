@@ -12,11 +12,9 @@ public class PromptBuilder {
                ctx.append("- [").append(r.getId()).append("] ").append(text.replaceAll("\n", " ")).append("\n");
           }
 
-          // Strong guardrail: require the model to only use context and to refuse when
-          // information is absent.
           return """
                     You are an expert assistant.
-                    You MUST answer ONLY using the context below. Do NOT use any outside knowledge or make assumptions.
+                    You MUST answer ONLY and ONLY using the context given below. Do NOT Perform any calculations. Do NOT use any outside knowledge or make assumptions.
                     If the answer cannot be found in the provided context, reply exactly: "I don't know based on the provided documents." and nothing else.
 
                     Context:
@@ -49,5 +47,4 @@ public class PromptBuilder {
                     """
                     .formatted(ctx.toString().trim(), question);
      }
-
 }

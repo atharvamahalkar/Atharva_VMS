@@ -54,6 +54,9 @@ public class RagService {
             this.vectorStore = new VectorStore();
             this.ragPipeline = new RAGPipeline(vectorStore);
             this.embeddingService = new OllamaEmbeddingService();
+            if (!embeddingService.isAvailable()) {
+                throw new RuntimeException("Ollama is not available. Please ensure Ollama is running and accessible.");
+            }
             this.comparisonLLM = isBlank(Config.OLLAMA_MODEL) ? new CloudLLM() : new OllamaLLM();
         }
     }
@@ -108,17 +111,17 @@ public class RagService {
         ManagedDocument document2 = getManagedDocument(document2Id);
 
         String comparisonQuery =
-                "Compare payment terms, delivery terms, penalties, obligations, risks, and recommendations.";
+                "contract terms, conditions, obligations, payments, deliveries, penalties, risks";
         float[] comparisonEmbedding = embeddingService.generateEmbedding(comparisonQuery);
 
         List<SearchResult> document1Chunks = vectorStore.searchWithScores(
                 comparisonEmbedding,
-                4,
+                10, // increased limit for more context
                 Config.PINECONE_NAMESPACE,
                 buildSourceFilter(document1.fileName()));
         List<SearchResult> document2Chunks = vectorStore.searchWithScores(
                 comparisonEmbedding,
-                4,
+                10, // increased limit for more context
                 Config.PINECONE_NAMESPACE,
                 buildSourceFilter(document2.fileName()));
 
@@ -206,12 +209,19 @@ Compare the two documents below using only the retrieved RAG context.
 Be specific and grounded in the retrieved text. Do not invent clauses.
 If the retrieved context is insufficient, say so plainly.
 
-Return sections with these exact headings:
+IMPORTANT: You MUST return your response with these exact section headings in this order:
 === SUMMARY ===
 === KEY SIMILARITIES ===
 === KEY DIFFERENCES ===
 === RISK ASSESSMENT ===
 === RECOMMENDATIONS ===
+
+For the KEY DIFFERENCES section, clearly differentiate between the two documents by:
+- Listing each difference with specific references to Document 1 and Document 2
+- Indicating which document has more favorable terms and why
+- Highlighting any conflicting or contradictory clauses
+- Noting any missing terms in one document that are present in the other
+- Strictly give everything in english and do not use any other language
 
 DOCUMENT 1
 ID: %s
@@ -289,7 +299,11 @@ Retrieved Context:
             DocumentIngestionService.ingestFolder(folderPath, vectorStore, embeddingService);
             return "Ingested folder: " + folderPath;
         } catch (Exception e) {
-            return "Failed ingesting " + folderPath + ": " + e.getMessage();
+            String message = e.getMessage();
+            if (message == null || message.isEmpty()) {
+                message = e.getClass().getSimpleName() + " (no message)";
+            }
+            return "Failed ingesting " + folderPath + ": " + message;
         }
     }
 

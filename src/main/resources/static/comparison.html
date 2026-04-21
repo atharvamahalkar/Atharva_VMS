@@ -324,10 +324,11 @@ Comparison Results
             })
             .then(response => response.json())
             .then(data => {
-                if (data.documentId) {
-                    uploadedDocumentId = data.documentId;
-                    showNotification('File uploaded successfully! You can now compare it with sample contracts.', 'success');
+                if (data.message && data.message.includes('uploaded')) {
+                    showNotification('File uploaded successfully! Refreshing document list...', 'success');
                     document.getElementById('comparisonStatus').textContent = 'File Uploaded';
+                    // Refresh the document lists
+                    loadRepositoryDocuments();
                 } else {
                     showNotification('Upload failed: ' + (data.message || 'Unknown error'), 'error');
                 }
