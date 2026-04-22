@@ -46,9 +46,9 @@ public class Config {
             return explicitGenerationModel;
         }
 
-        String configuredModel = System.getenv().getOrDefault("OLLAMA_MODEL", "qwen:0.5b");
+        String configuredModel = System.getenv().getOrDefault("OLLAMA_MODEL", "qwen3.5:0.8b");
         if (configuredModel.equalsIgnoreCase(OLLAMA_EMBEDDING_MODEL)) {
-            return "qwen:0.5b";
+            return "qwen3.5:0.8b";
         }
 
         return configuredModel;
