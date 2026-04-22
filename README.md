@@ -29,7 +29,7 @@ Follow these steps to set up and run the application:
 Run the following commands to download the required models:
 
 ```bash
-ollama pull qwen:0.5b
+ollama pull qwen3.5:0.8b
 ollama pull nomic-embed-text
 ollama serve
 ```
