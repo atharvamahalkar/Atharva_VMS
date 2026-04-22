@@ -29,7 +29,7 @@ Follow these steps to set up and run the application:
 Run the following commands to download the required models:
 
 ```bash
-ollama pull qwen:0.5b
+ollama pull qwen3.5:0.8b
 ollama pull nomic-embed-text
 ollama serve
 ```
@@ -109,7 +109,7 @@ Atharva_VMS/
 | **Database** | PostgreSQL | Structured data storage |
 | **Vector DB** | Pinecone | Semantic vector search |
 | **Embedding** | Ollama (nomic-embed-text) | Text embeddings (768-dim) |
-| **LLM** | Ollama (qwen:0.5b) | Answer generation |
+| **LLM** | Ollama (qwen3.5:0.8b) | Answer generation |
 | **Build** | Maven | Dependency & build management |
 | **Containerization** | Docker Compose | Multi-container orchestration |
 | **Frontend** | HTML5, CSS3, JavaScript | Web interface |
@@ -181,7 +181,7 @@ PINECONE_REGION=us-east-1
 
 # Ollama Configuration (Optional - defaults below)
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=qwen:0.5b
+OLLAMA_MODEL=qwen3.5:0.8b
 OLLAMA_EMBEDDING_MODEL=nomic-embed-text
 EMBEDDING_DIM=768
 ```
@@ -260,7 +260,7 @@ docker-compose up --build
 ### Models Not Found
 ```bash
 # Re-download models
-ollama pull qwen:0.5b
+ollama pull qwen3.5:0.8b
 ollama pull nomic-embed-text
 ```
 
